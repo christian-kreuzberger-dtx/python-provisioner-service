@@ -1,4 +1,4 @@
-module example.com/keptn-service-template-go
+module github.com/christian-kreuzberger-dtx/python-provisioner-service
 
 go 1.17
 
