@@ -2,4 +2,6 @@ deploy/
 .idea/
 .github/
 *.md
-test-events/
+venv/
+chart/
+CODEOWNERS

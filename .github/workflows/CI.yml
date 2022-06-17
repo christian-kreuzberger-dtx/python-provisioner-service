@@ -98,18 +98,6 @@ jobs:
           echo "::set-output name=DATETIME::$(date +'%Y%m%d')$(date +'%H%M')"
 
   ############################################################################
-  # Unit tests                                                               #
-  ############################################################################
-  unit-tests:
-    name: Unit Tests
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3.0.2
-      - name: Unit tests
-        uses: ./.github/actions/unit-tests
-
-  ############################################################################
   # Build Docker Image                                                      #
   ############################################################################
   docker_build:
