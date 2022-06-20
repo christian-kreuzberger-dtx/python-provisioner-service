@@ -9,16 +9,23 @@ This is a simple Python Provisioner Service for [Keptn's automatic git provision
 * Kubernetes cluster
 * Keptn
 
-First, we will install gitea. Then we will install python-provisioner-service
+First, we will install gitea in the `gitea` namespace. After that, we will install python-provisioner-service.
 ### Install Gitea
 ```console
+GITEA_NAMESPACE=gitea
 helm repo add gitea-charts https://dl.gitea.io/charts/
-helm install -n gitea gitea gitea-charts/gitea --create-namespace
+helm repo update
+helm install -n ${GITEA_NAMESPACE} gitea gitea-charts/gitea --create-namespace \
+  --set memcached.enabled=false \
+  --set postgresql.enabled=false \
+  --set gitea.config.database.DB_TYPE=sqlite3 \
+  --set gitea.config.server.OFFLINE_MODE=true \
+  --set gitea.config.server.ROOT_URL=http://gitea-http.${GITEA_NAMESPACE}:3000/
 ```
 
 You can access your gitea installation using
 ```console
-kubectl -n gitea port-forward services/gitea-http 3000:3000
+kubectl -n ${GITEA_NAMESPACE} port-forward services/gitea-http 3000:3000
 ```
 on http://localhost:3000
 
