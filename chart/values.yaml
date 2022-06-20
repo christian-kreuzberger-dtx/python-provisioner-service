@@ -5,6 +5,14 @@ image:
 service:
   enabled: true                              # Creates a Kubernetes Service for the python-provisioner-service
 
+
+provisionerConfig:
+  gitea:
+    serverUrl: "http://gitea-http.gitea:3000"
+    user: "gitea_admin"
+    password: "r8sA8CPHD9!bt6d" # gitea default password
+
+
 imagePullSecrets: []                         # Secrets to use for container registry credentials
 
 serviceAccount:

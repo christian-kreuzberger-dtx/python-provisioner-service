@@ -12,7 +12,7 @@ build:
 deploy:
   helm:
     flags:
-      upgrade: ["--reuse-values", "--install"]
+      upgrade: ["--install"]
     releases:
       - name: python-provisioner-service
         artifactOverrides:

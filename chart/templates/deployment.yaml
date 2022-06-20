@@ -43,10 +43,14 @@ spec:
           ports:
             - containerPort: 80
           env:
-          - name: CONFIGURATION_SERVICE
-            value: "http://localhost:8081/configuration-service"
-          - name: env
-            value: 'production'
+          - name: GITEA_SERVER_URL
+            value: {{ .Values.provisionerConfig.gitea.serverUrl | default "" }}
+          - name: GITEA_USER
+            value: {{ .Values.provisionerConfig.gitea.user | default "" }}
+          - name: GITEA_PASSWORD
+            value: {{ .Values.provisionerConfig.gitea.password | default "" }}
+          - name: FLASK_ENV
+            value: 'development'
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

@@ -2,6 +2,20 @@
 
 This is a simple Python Provisioner Service for [Keptn's automatic git provisioning](https://keptn.sh/docs/0.16.x/api/git_provisioning/) extension.
 
+## Install
+
+### Install Gitea
+```console
+helm repo add gitea-charts https://dl.gitea.io/charts/
+helm install -n gitea gitea gitea-charts/gitea --create-namespace
+```
+
+You can access your gitea installation using
+```console
+kubectl -n gitea port-forward services/gitea-http 3000:3000
+```
+on http://localhost:3000
+
 ## Development
 
 **Create a Python 3 virtual environment**
